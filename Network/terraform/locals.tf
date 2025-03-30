@@ -6,29 +6,29 @@ locals {
   
   primary_vpc_cidr   = "10.1.0.0/16"
 
-  #shared_dev_vpc_cidr = module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}account-lz2.0-shared-dev/vpc_cidr"]
+#shared_dev_vpc_cidr = module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}account-lz2.0-shared-dev/vpc_cidr"]
 	
-otherofc_s2s_route = "CIDR Range of OtherOfc"
-otherofc2_s2s_route = "CIDR Range of OtherOfc"
-vpn_log_retention_days = 1
-cloudwatch_logs_export_bucket = "s3-network-vpn-logs"
-log_archive_account_id = module.aft_accounts_info.param_name_values["${local.ssm_parameter_path_account_list}account-lz2.0-log_archive]
-vpn_log_export_rate = "rate(4 hours)"
-enable_vpn_log_export = true
-otherofc_vpntgw_attachment_id = 
-otherofc2_vpntgw_attachment_id = 
-dx_pri_vpntgw_attachment_id = 
-dx_sec_vpntgw_attachment_id = 
-azure_vpntgw_attachment_id = 
-gcp_vpntgw_attachment_id = 
+#otherofc_s2s_route = "CIDR Range of OtherOfc"
+#otherofc2_s2s_route = "CIDR Range of OtherOfc"
+#vpn_log_retention_days = 1
+#cloudwatch_logs_export_bucket = "s3-network-vpn-logs"
+#log_archive_account_id = module.aft_accounts_info.param_name_values["${local.ssm_parameter_path_account_list}account-lz2.0-log_archive]
+#vpn_log_export_rate = "rate(4 hours)"
+#enable_vpn_log_export = true
+#otherofc_vpntgw_attachment_id = 
+#otherofc2_vpntgw_attachment_id = 
+#dx_pri_vpntgw_attachment_id = 
+#dx_sec_vpntgw_attachment_id = 
+#azure_vpntgw_attachment_id = 
+#gcp_vpntgw_attachment_id = 
 
-azure_a_cidr = "Azure CIDR Range"
-azure_b_cidr = "Azure CIDR Range"
-azure_c_cidr = "Azure CIDR Range"
-gcp_a_cidr = "gcp CIDR Range"
-dms_dev_a_cidr = "DMS Dev CIDR Range"
-dms_uat_a_cidr = "DMS Uat CIDR Range"
-dms_prd_a_cidr = "DMS Prd CIDR Range"
+#azure_a_cidr = "Azure CIDR Range"
+#azure_b_cidr = "Azure CIDR Range"
+#azure_c_cidr = "Azure CIDR Range"
+#gcp_a_cidr = "gcp CIDR Range"
+#dms_dev_a_cidr = "DMS Dev CIDR Range"
+#dms_uat_a_cidr = "DMS Uat CIDR Range"
+#dms_prd_a_cidr = "DMS Prd CIDR Range"
 
 #Other Endpoint association
 
