@@ -201,7 +201,7 @@ resource "aws_route_table" "private_vpcendpoint_rt" {
 
 resource "aws_route_table_association" "private_vpcendpoint_rt_assoc" {
     count   = length(local.private_subnet_list_vpcendpoint)
-    subnet_id = element(aws_subnet.private_tgw_subnet.*.id, count.index)
+    subnet_id = element(aws_subnet.private_vpcendpoint_subnet.*.id, count.index)
     route_table_id = aws_route_table.private_vpcendpoint_rt.id
 
     depends_on = [
