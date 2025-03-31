@@ -32,7 +32,7 @@ inbound_ports - [443]
 
 rules = [
     {
-        cidr_blocks = [module.aft_accounts_info.param_name_values[${local.ssm_parameter_path}account-lz2.0-shared-dev-01/vpc_cidr]]
+        cidr_blocks = [module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}account-lz2.0-shared-dev-01/vpc_cidr"]]
     }
 ]
 }
@@ -54,7 +54,7 @@ account_list = ["account-lz2-shared-dev-01"]
 
 #--Account Number list contain shared and dev account Number
 
-account_number_list = ["", ""]
+account_number_list = ["610694133636"]
 rslr_rule_name = "aws.m-cloud.com"
 rslr_onprem_rule_name = "corp.ma.com"
 

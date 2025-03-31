@@ -138,7 +138,7 @@ resource "aws_ram_resource_share" "resolver-rule-shared-mum" {
     depends_on = [aws_route53_resolver_rule.aws_res_rule_01]
 }
 
-resouce "aws_ram_resource_association" "resolver-rule-shared_mum_assoc" {
+resource "aws_ram_resource_association" "resolver-rule-shared_mum_assoc" {
     resource_arn = aws_route53_resolver_rule.aws_res_rule_01.arn
     resource_share_arn = aws_ram_resource_share.resolver-rule-shared_mum.arn
 }
@@ -232,7 +232,7 @@ resource "aws_ram_resource_share" "resolver-rule-onprem-mum" {
     depends_on = [aws_route53_resolver_rule.onprem_res_rule_01]
 }
 
-resouce "aws_ram_resource_association" "resolver-rule-onprem_mum_assoc" {
+resource "aws_ram_resource_association" "resolver-rule-onprem_mum_assoc" {
     resource_arn = aws_route53_resolver_rule.onprem_res_rule_01.arn
     resource_share_arn = aws_ram_resource_share.resolver-rule-onprem_mum.arn
 }
