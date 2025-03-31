@@ -1,4 +1,4 @@
-resource "aws_vpc" "network_vpc" {
+resource "aws_vpc" "comsrv_vpc" {
   cidr_block = local.primary_vpc_cidr
  
   instance_tenancy                 = local.instance_tenancy

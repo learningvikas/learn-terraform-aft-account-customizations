@@ -1,29 +1,29 @@
 locals {
-  account_name      = "account-lz2-network"
-  primary_vpc_name  = "vpc-network-mum-01"
+  account_name      = "account-lz2-common_02"
+  primary_vpc_name  = "vpc-comsrv-mum-01"
   primary_region    = "ap-south-1"
   availability_zones = ["${local.primary_region}a", "${local.primary_region}b"]
 
-primary_vpc_cidr   = "10.1.0.0/16"
+primary_vpc_cidr   = "10.166.0.0/16"
 
-private_subnet_list    = ["10.1.0.0/17", "10.1.128.0/17"]
+private_subnet_list    = ["10.166.0.0/28", "10.166.0.16/28"]
 private_subnet_name    = ["snt-comsrv-tgwattach-mum-a01", "snt-comsrv-tgwattach-mum-b01"]
 private_subnet_routetable = ["rtb-comsrv-tgwattach-mum-01"]
 
-private_subnet_list    = ["10.1.0.0/17", "10.1.128.0/17"]
+private_subnet_list    = ["10.166.0.32/28", "10.166.0.48/28"]
 private_subnet_name    = ["snt-comsrv-bastion-mum-a01", "snt-comsrv-bastion-mum-b01"]
 private_subnet_routetable = ["rtb-comsrv-bastion-private-mum-01"]
 
-private_subnet_list    = ["10.1.0.0/17", "10.1.128.0/17"]
+private_subnet_list    = ["10.166.0.64/28", "10.166.0.80/28"]
 private_subnet_name    = ["snt-comsrv-resolvr-mum-a01", "snt-comsrv-resolvr-mum-b01"]
 private_subnet_routetable = ["rtb-comsrv-resolvr-private-mum-01"]
 
-private_subnet_list    = ["10.1.0.0/17", "10.1.128.0/17"]
+private_subnet_list    = ["10.166.0.128/26", "10.166.0.192/26"]
 private_subnet_name    = ["snt-comsrv-vpcendpoint-mum-a01", "snt-comsrv-vpcendpoint-mum-b01"]
 private_subnet_routetable = ["rtb-comsrv-vpcendpoint-private-mum-01"]
 
 #Shared IDs 
-network_account_id = module.aft_account_list.param_name_values["${local.ssm_parameter_path_account_list}account-lz2.0-network"]
+network_account_id = module.aft_account_list.param_name_values["${local.ssm_parameter_path_account_list}account-lz2-network"]
 network_tgw_id = data.aws_ec2_transit_gateway.primary_network_tgw.id
 
 #vpc cidr for sg_comsrv_endpoint, which want to use vpc endpoints for session manager
@@ -32,7 +32,7 @@ inbound_ports - [443]
 
 rules = [
     {
-        cidr_blocks = module.aft_accounts_info.param_name_values[${local.ssm_parameter_path}account-lz2.0-shared-dev/vpc_cidr]
+        cidr_blocks = [module.aft_accounts_info.param_name_values[${local.ssm_parameter_path}account-lz2.0-shared-dev-01/vpc_cidr]]
     }
 ]
 }
@@ -48,9 +48,9 @@ tgw_default_rt_association - false
 
 #Shared-Route 53 settings
 private_r53_zone_name = "shared.aws.m-cloud.com
-private_network_range = ["", ""]
-onprem_private_network_range = ["", ""]
-account_list = ["", ""]
+# private_network_range = ["", ""]
+onprem_private_network_range = ["10.164.0.0/16"]
+account_list = ["account-lz2-shared-dev-01"]
 
 #--Account Number list contain shared and dev account Number
 
@@ -59,20 +59,20 @@ rslr_rule_name = "aws.m-cloud.com"
 rslr_onprem_rule_name = "corp.ma.com"
 
 # Dev Route 53 settings
-private_r53_zone_name_dev = "dev.aws.m-cloud.com"
-account_list_dev          = ["Account Name]
+#private_r53_zone_name_dev = "dev.aws.m-cloud.com"
+#account_list_dev          = ["account-lz2-shared-dev-01"]
 
 # UAT Route 53 settings
-private_r53_zone_name_uat = "uat.aws.m-cloud.com"
-account_list_dev          = ["Account Name"]
+#private_r53_zone_name_uat = "uat.aws.m-cloud.com"
+#account_list_dev          = ["Account Name"]
 
 # Prd Route 53 settings
-private_r53_zone_name_prd = "prd.aws.m-cloud.com"
-account_list_dev          = ["Account Name"]
+#private_r53_zone_name_prd = "prd.aws.m-cloud.com"
+#account_list_dev          = ["Account Name"]
 
 # ssm.ap-south-1.amazonaws.com Endpoint route 53 setting
 private_r53_zone_ssm_endpoint = "ssm.ap-south-1.amazonaws.com"
-account_list_endpoint         = ["account"]
+account_list_endpoint         = ["account-lz2-shared-dev-01"]
 
 # ec2messages.ap-south-1.amazonaws.com Endpoint route r53 setting
 private_r53_zone_ec2messages_endpoint = "ec2messages.ap-south-1.amazonaws.com"
@@ -80,11 +80,11 @@ private_r53_zone_ec2messages_endpoint = "ec2messages.ap-south-1.amazonaws.com"
 # s3 endpoint route 53 setting
 
 private_r53_zone_s3_endpoint = "s3.ap-south-1.amazonaws.com"
-s3_account_list_endpoint     = ["accountname"]
+s3_account_list_endpoint     = ["account-lz2-shared-dev-01"]
 
 #All Oother VPC endpoints 
 names of service = ["sns", "sqs", "rds", "elasticache", "backup", "ecr.dkr", "eks", "ecs", "glue", "elasticbeanstalk", "email-smpt"]
-all_account_list_vpc = ["account-lz2.0-shared-dev"]
+all_account_list_vpc = ["account-lz2.0-shared-dev-01"]
 vpc_endpoint_authorization_list = flatten(
     [
         for account_name in local.all_account_list_vpc : [
