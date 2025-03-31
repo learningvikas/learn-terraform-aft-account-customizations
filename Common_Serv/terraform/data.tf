@@ -16,12 +16,12 @@ data "aws_subnet" "private_subnet_aza" {
     }
 
      filter {
-        name = "availability_zone"
+        name = "availability_zones"
         values = [local.availability_zones[0]]
     }
 
       filter {
-        name = "availability_zone"
+        name = "availability_zones"
         values = [local.private_subnet_list_vpcendpoint[0]]
     }
 }
@@ -33,12 +33,12 @@ data "aws_subnet" "private_subnet_azb" {
     }
 
       filter {
-        name = "availability_zone"
+        name = "availability_zones"
         values = [local.availability_zones[1]]
     }
 
      filter {
-        name = "availability_zone"
+        name = "availability_zones"
         values = [local.private_subnet_list_vpcendpoint[1]]
     }
 }
