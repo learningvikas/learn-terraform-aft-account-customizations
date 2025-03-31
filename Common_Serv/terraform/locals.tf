@@ -9,7 +9,7 @@ primary_vpc_cidr   = "10.166.0.0/16"
 
 private_tgw_subnet_list    = ["10.166.0.0/28", "10.166.0.16/28"]
 private_tgw_subnet_name    = ["snt-comsrv-tgwattach-mum-a01", "snt-comsrv-tgwattach-mum-b01"]
-private_tgw_rtb_name =       "rtb-comsrv-tgwattach-mum-01"
+private_tgw_rtb_name       = "rtb-comsrv-tgwattach-mum-01"
 
 private_subnet_list_bastion    = ["10.166.0.32/28", "10.166.0.48/28"]
 private_subnet_name_bastion    = ["snt-comsrv-bastion-mum-a01", "snt-comsrv-bastion-mum-b01"]
@@ -36,22 +36,22 @@ network_tgw_id = data.aws_ec2_transit_gateway.primary_network_tgw.id
 #        cidr_blocks = [module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}account-lz2.0-shared-dev-01/vpc_cidr"]]
 #    }
 #]
-}
+
 
 #Primary Network Details
-#primary_igw_name = "igw_comsrv_mum-01"
-#public_nat_rt_name = "rtb-comsrv-publicnat-mum01"
-#private_tgw_rt_name = "rtb-comsrv-privatetgw-mum01"
-#private_fw_rt_name = "rtb-comsrc-privatefw-mum01"
-#tgw-attachment-name = "tgw-comsrv-tgwattach-mum01"
-#appliance_mode_support = "enable"
-#tgw_default_rt_association - false
+primary_igw_name = "igw_comsrv_mum-01"
+public_nat_rt_name = "rtb-comsrv-publicnat-mum01"
+private_tgw_rt_name = "rtb-comsrv-privatetgw-mum01"
+private_fw_rt_name = "rtb-comsrc-privatefw-mum01"
+tgw-attachment-name = "tgw-comsrv-tgwattach-mum01"
+appliance_mode_support = "enable"
+tgw_default_rt_association - false
 
 #Shared-Route 53 settings
 #private_r53_zone_name = "shared.aws.m-cloud.com
 #private_network_range = ["", ""]
 #onprem_private_network_range = ["10.164.0.0/16"]
-account_list = ["account-lz2-shared-dev-01"]
+#account_list = ["account-lz2-shared-dev-01"]
 
 #--Account Number list contain shared and dev account Number
 
@@ -135,5 +135,7 @@ export_output = {
 
 #Export outputs of type list
 export_list_output = {
+
+ }
 
 }

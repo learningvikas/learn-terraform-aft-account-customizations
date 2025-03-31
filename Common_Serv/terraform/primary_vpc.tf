@@ -8,11 +8,11 @@ resource "aws_vpc" "comsrv_vpc" {
  
   tags = merge(
     { "Name"    = "${local.primary_vpc_name}",
-      "flowlog" = "enable"
     },
-    local.common-tags
+    local.common_tags
   )
 }
+
 
 resource "aws_subnet" "private_tgw_subnet" {
   count             = length(local.private_tgw_subnet_list)
@@ -23,11 +23,21 @@ resource "aws_subnet" "private_tgw_subnet" {
   tags = merge(
     {
       Name = try(
-        local.private_subnet_name[count.index],
+        local.private_tgw_subnet_name[count.index],
         format("${local.primary_vpc_name}-private-tgw-%s", element(local.availability_zones, count.index))
       )
     },
-    local.common-tags
+    local.common_tags
+  )
+}
+
+resource "aws_route_table" "private_tgw_rt" {
+  vpc_id = aws_vpc.comsrv_vpc.id
+  tags = merge(
+    {
+      "Name" = local.private_tgw_rtb_name
+    },
+    local.common_tags
   )
 }
 
@@ -63,7 +73,7 @@ resource "aws_subnet" "private_bastion_subnet" {
         format("${local.primary_vpc_name}-private-tgw-%s", element(local.availability_zones, count.index))
       )
     },
-    local.common-tags
+    local.common_tags
   )
 }
 
@@ -119,7 +129,7 @@ resource "aws_subnet" "private_resolver_subnet" {
         format("${local.primary_vpc_name}-private-%s", element(local.availability_zones, count.index))
       )
     },
-    local.common-tags
+    local.common_tags
   )
 }
 
@@ -175,7 +185,7 @@ resource "aws_subnet" "private_vpcendpoint_subnet" {
         format("${local.primary_vpc_name}-private-%s", element(local.availability_zones, count.index))
       )
     },
-    local.common-tags
+    local.common_tags
   )
 }
 
