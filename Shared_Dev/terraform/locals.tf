@@ -34,8 +34,9 @@ locals {
   private_subnet_rtb_name_db = "rtb-shared-dev-db-private-mum-01"
  
  
-  network_account_id = module.aft_account_list.param_name_values["${local.ssm_parameter_path_account_list}account-lz2-network"]
+  #network_account_id = module.aft_account_list.param_name_values["${local.ssm_parameter_path_account_list}account-lz2-network"]
   network_tgw_id     = data.aws_ec2_transit_gateway.primary_network_tgw.id
+  network_account_id  = ["155072754388"]
 
   
   primary_igw_name           = "igw-shared-dev-mum-01"
