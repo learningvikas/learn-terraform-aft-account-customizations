@@ -28,14 +28,14 @@ network_tgw_id = data.aws_ec2_transit_gateway.primary_network_tgw.id
 
 #vpc cidr for sg_comsrv_endpoint, which want to use vpc endpoints for session manager
 #Security group settings
-inbound_ports - [443]
+#inbound_ports - [443]
 
-rules = [
-    {
-        cidr_blocks = [module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}account-lz2.0-shared-dev-01/vpc_cidr"]]
-    }
-]
-}
+#rules = [
+#    {
+#        cidr_blocks = [module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}account-lz2.0-shared-dev-01/vpc_cidr"]]
+#    }
+#]
+#}
 
 #Primary Network Details
 #primary_igw_name = "igw_comsrv_mum-01"
@@ -47,16 +47,16 @@ rules = [
 #tgw_default_rt_association - false
 
 #Shared-Route 53 settings
-private_r53_zone_name = "shared.aws.m-cloud.com
-# private_network_range = ["", ""]
-onprem_private_network_range = ["10.164.0.0/16"]
+#private_r53_zone_name = "shared.aws.m-cloud.com
+#private_network_range = ["", ""]
+#onprem_private_network_range = ["10.164.0.0/16"]
 account_list = ["account-lz2-shared-dev-01"]
 
 #--Account Number list contain shared and dev account Number
 
 account_number_list = ["610694133636"]
-rslr_rule_name = "aws.m-cloud.com"
-rslr_onprem_rule_name = "corp.ma.com"
+#rslr_rule_name = "aws.m-cloud.com"
+#rslr_onprem_rule_name = "corp.ma.com"
 
 # Dev Route 53 settings
 #private_r53_zone_name_dev = "dev.aws.m-cloud.com"
