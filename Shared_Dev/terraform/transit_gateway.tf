@@ -2,7 +2,7 @@
 data "aws_ec2_transit_gateway" "primary_network_tgw" {
   filter {
     name   = "owner-id"
-    values = [local.network_account_id]
+    values = ["155072754388"]
   }
   filter {
     name   = "state"
