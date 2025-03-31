@@ -16,7 +16,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_network" {
     vpc_id = aws_vpc.comsrv_vpc.id
     appliance_mode_support = local.appliance_mode_support
     transit_gateway_default_route_table_association = local.tgw_default_rt_association
-    transit_gateway_default_route_table_association = local.tgw_default_rt_propagation
+    transit_gateway_default_route_table_propagation = local.tgw_default_rt_propagation
     tags = merge(
         {
             "Name" : "${local.tgw_attachment_name}",
