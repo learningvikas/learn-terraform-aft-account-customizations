@@ -88,18 +88,18 @@ private_r53_zone_ec2messages_endpoint = "ec2messages.ap-south-1.amazonaws.com"
 s3_account_list_endpoint     = ["account-lz2-shared-dev-01"]
 
 #All Oother VPC endpoints 
-names_of_service = ["sns", "sqs", "rds", "elasticache", "backup", "ecr.dkr", "eks", "ecs", "glue", "elasticbeanstalk", "email-smpt"]
-all_account_list_vpc = ["account-lz2.0-shared-dev-01"]
-vpc_endpoint_authorization_list = flatten(
-    [
-        for account_name in local.all_account_list_vpc : [
-            for endpoint_name in local.names_of_service : {
-                account_name = account_name
-                endpoint_hz_id = aws_route53_zone.all_endpoint_route53_zone[endpoint_name].id
-            }
-        ]
-    ]
-)
+#names_of_service = ["sns", "sqs", "rds", "elasticache", "backup", "ecr.dkr", "eks", "ecs", "glue", "elasticbeanstalk", "email-smtp"]
+#all_account_list_vpc = ["account-lz2.0-shared-dev-01"]
+#vpc_endpoint_authorization_list = flatten(
+#    [
+#        for account_name in local.all_account_list_vpc : [
+#           for endpoint_name in local.names_of_service : {
+#                account_name = account_name
+#               endpoint_hz_id = aws_route53_zone.all_endpoint_route53_zone[endpoint_name].id
+#            }
+#       ]
+#    ]
+#)
 
 instance_tenancy        = "default"
 enable_dns_support      = true
