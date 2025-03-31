@@ -48,6 +48,8 @@ private_fw_rt_name = "rtb-comsrc-privatefw-mum01"
 tgw_attachment_name = "tgw-comsrv-tgwattach-mum01"
 appliance_mode_support = "enable"
 tgw_default_rt_association = false
+tgw_default_rt_propagation = true
+network_tgw = "tgw-030443beea8bb87fe"
 
 #Shared-Route 53 settings
 #private_r53_zone_name = "shared.aws.m-cloud.com
