@@ -6,21 +6,21 @@ locals {
 
 primary_vpc_cidr   = "10.166.0.0/16"
 
-private_subnet_list    = ["10.166.0.0/28", "10.166.0.16/28"]
-private_subnet_name    = ["snt-comsrv-tgwattach-mum-a01", "snt-comsrv-tgwattach-mum-b01"]
-private_subnet_routetable = ["rtb-comsrv-tgwattach-mum-01"]
+private_tgw_subnet_list    = ["10.166.0.0/28", "10.166.0.16/28"]
+private_tgw_subnet_name    = ["snt-comsrv-tgwattach-mum-a01", "snt-comsrv-tgwattach-mum-b01"]
+private_tgw_rtb_name = ["rtb-comsrv-tgwattach-mum-01"]
 
-private_subnet_list    = ["10.166.0.32/28", "10.166.0.48/28"]
-private_subnet_name    = ["snt-comsrv-bastion-mum-a01", "snt-comsrv-bastion-mum-b01"]
-private_subnet_routetable = ["rtb-comsrv-bastion-private-mum-01"]
+private_subnet_list_bastion    = ["10.166.0.32/28", "10.166.0.48/28"]
+private_subnet_name_bastion    = ["snt-comsrv-bastion-mum-a01", "snt-comsrv-bastion-mum-b01"]
+private_subnet_rtb_name_bastion = ["rtb-comsrv-bastion-private-mum-01"]
 
-private_subnet_list    = ["10.166.0.64/28", "10.166.0.80/28"]
-private_subnet_name    = ["snt-comsrv-resolvr-mum-a01", "snt-comsrv-resolvr-mum-b01"]
-private_subnet_routetable = ["rtb-comsrv-resolvr-private-mum-01"]
+private_subnet_list_resolver    = ["10.166.0.64/28", "10.166.0.80/28"]
+private_subnet_name_resolver    = ["snt-comsrv-resolvr-mum-a01", "snt-comsrv-resolvr-mum-b01"]
+private_subnet_rtb_name_resolver = ["rtb-comsrv-resolvr-private-mum-01"]
 
-private_subnet_list    = ["10.166.0.128/26", "10.166.0.192/26"]
-private_subnet_name    = ["snt-comsrv-vpcendpoint-mum-a01", "snt-comsrv-vpcendpoint-mum-b01"]
-private_subnet_routetable = ["rtb-comsrv-vpcendpoint-private-mum-01"]
+private_subnet_list_vpcendpoint    = ["10.166.0.128/26", "10.166.0.192/26"]
+private_subnet_name_vpcendpoint    = ["snt-comsrv-vpcendpoint-mum-a01", "snt-comsrv-vpcendpoint-mum-b01"]
+private_subnet_rtb_name_vpcendpoint = ["rtb-comsrv-vpcendpoint-private-mum-01"]
 
 #Shared IDs 
 network_account_id = module.aft_account_list.param_name_values["${local.ssm_parameter_path_account_list}account-lz2-network"]
