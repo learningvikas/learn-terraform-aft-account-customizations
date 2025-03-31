@@ -18,7 +18,8 @@ locals {
   tgw_name    = "tgw-network-mum-01"
   tgw_aws_asn = 65532
 
-  root_ou_arn = "arn:aws:organizations::${module.aft_account_list.param_name_values["${local.ssm_parameter_path_account_list}awscontroltower"]}:organization/${data.aws_ssm_parameter.master_org_id.value}"
+  #root_ou_arn = "arn:aws:organizations::${module.aft_account_list.param_name_values["${local.ssm_parameter_path_account_list}awscontroltower"]}:organization/${data.aws_ssm_parameter.master_org_id.value}"
+  root_ou_arn = "arn:aws:organizations::238342914355:root/o-wupin0jry4/r-mg6w"
 
   common-tags = {
     requester-name = "vikas dubey"
