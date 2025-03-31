@@ -38,7 +38,7 @@ resource "aws_route_table_association" "private_tgw_rt_assoc" {
 }
 
 resource "aws_route" "private_tgw_subnet_egress" {
-    route_table.id  = aws_route_table.private_tgw_rt.id
+    route_table_id  = aws_route_table.private_tgw_rt.id
     destination_cidr_block = "0.0.0.0/0"
     transit_gateway_id = data.aws_ec2_transit_gateway.primary_network_tgw.id
 
@@ -89,7 +89,7 @@ resource "aws_route_table_association" "private_bastion_rt_assoc" {
 
 resource "aws_route" "private_bastion_route" {
     count   = length(local.private_subnet_list_bastion)
-    route_table.id = aws_route_table.private_bastion_rt.id
+    route_table_id = aws_route_table.private_bastion_rt.id
     destination_cidr_block = "0.0.0.0/0"
     transit_gateway_id = local.network_tgw.id
 
@@ -145,7 +145,7 @@ resource "aws_route_table_association" "private_resolver_rt_assoc" {
 
 resource "aws_route" "private_resolver_route" {
     count   = length(local.private_subnet_list_resolver)
-    route_table.id  = aws_route_table.private_resolver_rt.id
+    route_table_id  = aws_route_table.private_resolver_rt.id
     destination_cidr_block = "0.0.0.0/0"
     transit_gateway_id = local.network_tgw.id
 
@@ -201,7 +201,7 @@ resource "aws_route_table_association" "private_vpcendpoint_rt_assoc" {
 
 resource "aws_route" "private_vpcendpoint_route" {
     count   = length(local.private_subnet_list_vpcendpoint)
-    route_table.id  = aws_route_table.private_vpcendpoint_rt.id
+    route_table_id  = aws_route_table.private_vpcendpoint_rt.id
     destination_cidr_block = "0.0.0.0/0"
     transit_gateway_id = local.network_tgw.id
 

@@ -4,6 +4,7 @@ locals {
   primary_region    = "ap-south-1"
   availability_zones = ["${local.primary_region}a", "${local.primary_region}b"]
 
+
 primary_vpc_cidr   = "10.166.0.0/16"
 
 private_tgw_subnet_list    = ["10.166.0.0/28", "10.166.0.16/28"]
@@ -35,7 +36,7 @@ network_tgw_id = data.aws_ec2_transit_gateway.primary_network_tgw.id
 #        cidr_blocks = [module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}account-lz2.0-shared-dev-01/vpc_cidr"]]
 #    }
 #]
-#}
+}
 
 #Primary Network Details
 #primary_igw_name = "igw_comsrv_mum-01"
