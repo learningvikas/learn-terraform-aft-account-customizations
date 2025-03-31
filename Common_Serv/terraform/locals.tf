@@ -30,14 +30,14 @@ network_tgw_id = data.aws_ec2_transit_gateway.primary_network_tgw.id
 network_account_id  = ["155072754388"]
 
 #vpc cidr for sg_comsrv_endpoint, which want to use vpc endpoints for session manager
-#Security group settings
-#inbound_ports - [443]
+Security group settings
+inbound_ports = [443]
 
-#rules = [
-#    {
-#        cidr_blocks = [module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}account-lz2.0-shared-dev-01/vpc_cidr"]]
-#    }
-#]
+rules = [
+    {
+        cidr_blocks = [module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}account-lz2.0-shared-dev-01/vpc_cidr"]]
+    }
+]
 
 
 #Primary Network Details
@@ -55,7 +55,7 @@ network_tgw = "tgw-030443beea8bb87fe"
 #private_r53_zone_name = "shared.aws.m-cloud.com
 #private_network_range = ["", ""]
 #onprem_private_network_range = ["10.164.0.0/16"]
-#account_list = ["account-lz2-shared-dev-01"]
+account_list = ["account-lz2-shared-dev-01"]
 
 #--Account Number list contain shared and dev account Number
 
@@ -76,30 +76,30 @@ account_number_list = ["610694133636"]
 #account_list_dev          = ["Account Name"]
 
 # ssm.ap-south-1.amazonaws.com Endpoint route 53 setting
-#private_r53_zone_ssm_endpoint = "ssm.ap-south-1.amazonaws.com"
-#account_list_endpoint         = ["account-lz2-shared-dev-01"]
+private_r53_zone_ssm_endpoint = "ssm.ap-south-1.amazonaws.com"
+account_list_endpoint         = ["account-lz2-shared-dev-01"]
 
 # ec2messages.ap-south-1.amazonaws.com Endpoint route r53 setting
-#private_r53_zone_ec2messages_endpoint = "ec2messages.ap-south-1.amazonaws.com"
+private_r53_zone_ec2messages_endpoint = "ec2messages.ap-south-1.amazonaws.com"
 
 # s3 endpoint route 53 setting
 
 #private_r53_zone_s3_endpoint = "s3.ap-south-1.amazonaws.com"
-#s3_account_list_endpoint     = ["account-lz2-shared-dev-01"]
+s3_account_list_endpoint     = ["account-lz2-shared-dev-01"]
 
 #All Oother VPC endpoints 
-#names of service = ["sns", "sqs", "rds", "elasticache", "backup", "ecr.dkr", "eks", "ecs", "glue", "elasticbeanstalk", "email-smpt"]
-#all_account_list_vpc = ["account-lz2.0-shared-dev-01"]
-#vpc_endpoint_authorization_list = flatten(
-#    [
-#        for account_name in local.all_account_list_vpc : [
-#            for endpoint_name in local.names_of_service : {
-#                account_name = account_name
-#                endpoint_hz_id = aws_route53_zone.all_endpoint_route53_zone[endpoint_name].id
-#            }
-#        ]
-#    ]
-#)
+names of service = ["sns", "sqs", "rds", "elasticache", "backup", "ecr.dkr", "eks", "ecs", "glue", "elasticbeanstalk", "email-smpt"]
+all_account_list_vpc = ["account-lz2.0-shared-dev-01"]
+vpc_endpoint_authorization_list = flatten(
+    [
+        for account_name in local.all_account_list_vpc : [
+            for endpoint_name in local.names_of_service : {
+                account_name = account_name
+                endpoint_hz_id = aws_route53_zone.all_endpoint_route53_zone[endpoint_name].id
+            }
+        ]
+    ]
+)
 
 instance_tenancy        = "default"
 enable_dns_support      = true
