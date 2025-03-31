@@ -60,7 +60,7 @@ vpc_endpoint_ssm_parameter_path = "/nm/aft/account_customization/output/account-
   
   tgw_name       = "tgw-network-mum-01"
   tgw_aws_asn    = 65532
-  root_ou_arn    = "arn:aws:organizations::${module.aft_account_list.param_name_values["${local.ssm_parameter_path_account_list}account-lz2.0-master]}:organization/${data.aws_ssm_parameter.master_org_id.value}"
+  root_ou_arn    = "arn:aws:organizations::${module.aft_account_list.param_name_values["${local.ssm_parameter_path_account_list}awscontroltower]}:organization/${data.aws_ssm_parameter.master_org_id.value}"
   
   common-tags = {
      requester-name         = "vikas dubey"
