@@ -30,7 +30,7 @@ network_tgw_id = data.aws_ec2_transit_gateway.primary_network_tgw.id
 network_account_id  = ["155072754388"]
 
 #vpc cidr for sg_comsrv_endpoint, which want to use vpc endpoints for session manager
-Security group settings
+#Security group settings
 inbound_ports = [443]
 
 rules = [
@@ -88,7 +88,7 @@ private_r53_zone_ec2messages_endpoint = "ec2messages.ap-south-1.amazonaws.com"
 s3_account_list_endpoint     = ["account-lz2-shared-dev-01"]
 
 #All Oother VPC endpoints 
-names of service = ["sns", "sqs", "rds", "elasticache", "backup", "ecr.dkr", "eks", "ecs", "glue", "elasticbeanstalk", "email-smpt"]
+names_of_service = ["sns", "sqs", "rds", "elasticache", "backup", "ecr.dkr", "eks", "ecs", "glue", "elasticbeanstalk", "email-smpt"]
 all_account_list_vpc = ["account-lz2.0-shared-dev-01"]
 vpc_endpoint_authorization_list = flatten(
     [
