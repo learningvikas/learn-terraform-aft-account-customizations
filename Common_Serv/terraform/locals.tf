@@ -118,7 +118,7 @@ ssm_parameter_path_account_list  = "/nm/aft/account_id/"
 
 export_output = {
     vpc_id      = aws_vpc.comsrv_vpc.id
-    vpc_cidr    = aws_vpc.comsr_vpc.cidr_block
+    vpc_cidr    = aws_vpc.comsrv_vpc.cidr_block
     tgw_attachment_id   = aws_ec2_transit_gateway_vpc_attachment.tgw_network.id 
     #ssm_endpoint_id     = aws_route53_zone.ssm_endpoint_route53_zone.id
     #ssmmessages_endpoint_id = aws_route53_zone.ssmmessages_endpoint_route53_zone.id

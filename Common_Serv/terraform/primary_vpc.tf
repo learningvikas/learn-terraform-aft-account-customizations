@@ -101,7 +101,7 @@ resource "aws_route" "private_bastion_route" {
     count   = length(local.private_subnet_list_bastion)
     route_table_id = aws_route_table.private_bastion_rt.id
     destination_cidr_block = "0.0.0.0/0"
-    transit_gateway_id = local.network_tgw.id
+    transit_gateway_id = local.network_tgw
 
     timeouts {
         create = "5m"
@@ -157,7 +157,7 @@ resource "aws_route" "private_resolver_route" {
     count   = length(local.private_subnet_list_resolver)
     route_table_id  = aws_route_table.private_resolver_rt.id
     destination_cidr_block = "0.0.0.0/0"
-    transit_gateway_id = local.network_tgw.id
+    transit_gateway_id = local.network_tgw
 
     timeouts {
         create = "5m"
@@ -213,7 +213,7 @@ resource "aws_route" "private_vpcendpoint_route" {
     count   = length(local.private_subnet_list_vpcendpoint)
     route_table_id  = aws_route_table.private_vpcendpoint_rt.id
     destination_cidr_block = "0.0.0.0/0"
-    transit_gateway_id = local.network_tgw.id
+    transit_gateway_id = local.network_tgw
 
     timeouts {
         create = "5m"
