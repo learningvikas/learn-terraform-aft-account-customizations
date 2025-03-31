@@ -72,16 +72,16 @@ account_number_list = ["610694133636"]
 #account_list_dev          = ["Account Name"]
 
 # ssm.ap-south-1.amazonaws.com Endpoint route 53 setting
-private_r53_zone_ssm_endpoint = "ssm.ap-south-1.amazonaws.com"
-account_list_endpoint         = ["account-lz2-shared-dev-01"]
+#private_r53_zone_ssm_endpoint = "ssm.ap-south-1.amazonaws.com"
+#account_list_endpoint         = ["account-lz2-shared-dev-01"]
 
 # ec2messages.ap-south-1.amazonaws.com Endpoint route r53 setting
-private_r53_zone_ec2messages_endpoint = "ec2messages.ap-south-1.amazonaws.com"
+#private_r53_zone_ec2messages_endpoint = "ec2messages.ap-south-1.amazonaws.com"
 
 # s3 endpoint route 53 setting
 
-private_r53_zone_s3_endpoint = "s3.ap-south-1.amazonaws.com"
-s3_account_list_endpoint     = ["account-lz2-shared-dev-01"]
+#private_r53_zone_s3_endpoint = "s3.ap-south-1.amazonaws.com"
+#s3_account_list_endpoint     = ["account-lz2-shared-dev-01"]
 
 #All Oother VPC endpoints 
 #names of service = ["sns", "sqs", "rds", "elasticache", "backup", "ecr.dkr", "eks", "ecs", "glue", "elasticbeanstalk", "email-smpt"]
@@ -116,21 +116,21 @@ export_output = {
     vpc_id      = aws_vpc.comsrv_vpc.id
     vpc_cidr    = aws_vpc.comsr_vpc.cidr_block
     tgw_attachment_id   = aws_ec2_transit_gateway_vpc_attachment.tgw_network.id 
-    ssm_endpoint_id     = aws_route53_zone.ssm_endpoint_route53_zone.id
-    ssmmessages_endpoint_id = aws_route53_zone.ssmmessages_endpoint_route53_zone.id
-    ec2messages_endpoint_id = aws_route53_zone.ec2messages_endpoint_route53_zone.id
-    s3_endpoint_id      = aws_route53_zone.s3_endpoint_id_route53_zone.id
-    sns_zone_id     = aws_route53_zone.all_endpoint_route53_zone["sns"].id
-    sqs_zone_id     = aws_route53_zone.all_endpoint_route53_zone["sqs"].id
-    rds_zone_id = aws_route53_zone.all_endpoint_route53_zone["rds"].id
-    elasticache_zone_id = aws_route53_zone.all_endpoint_route53_zone["elasticache"].id
-    backup_zone_id = aws_route53_zone.all_endpoint_route53_zone["backup"].id
-    ecr_dkr_zone_id = aws_route53_zone.all_endpoint_route53_zone["ecr_dkr"].id
-    eks_zone_id = aws_route53_zone.all_endpoint_route53_zone["eks"].id
-    ecs_zone_id = aws_route53_zone.all_endpoint_route53_zone["ecs"].id
-    glue_zone_id = aws_route53_zone.all_endpoint_route53_zone["glue"].id
-    elasticbeanstalk_zone_id = aws_route53_zone.all_endpoint_route53_zone["elasticbeanstalk"].id
-    email_smtp_zone_id = aws_route53_zone.all_endpoint_route53_zone["email-smtp"].id
+    #ssm_endpoint_id     = aws_route53_zone.ssm_endpoint_route53_zone.id
+    #ssmmessages_endpoint_id = aws_route53_zone.ssmmessages_endpoint_route53_zone.id
+    #ec2messages_endpoint_id = aws_route53_zone.ec2messages_endpoint_route53_zone.id
+    #s3_endpoint_id      = aws_route53_zone.s3_endpoint_id_route53_zone.id
+    #sns_zone_id     = aws_route53_zone.all_endpoint_route53_zone["sns"].id
+    #sqs_zone_id     = aws_route53_zone.all_endpoint_route53_zone["sqs"].id
+    #rds_zone_id = aws_route53_zone.all_endpoint_route53_zone["rds"].id
+    #elasticache_zone_id = aws_route53_zone.all_endpoint_route53_zone["elasticache"].id
+    #backup_zone_id = aws_route53_zone.all_endpoint_route53_zone["backup"].id
+    #ecr_dkr_zone_id = aws_route53_zone.all_endpoint_route53_zone["ecr_dkr"].id
+    #eks_zone_id = aws_route53_zone.all_endpoint_route53_zone["eks"].id
+    #ecs_zone_id = aws_route53_zone.all_endpoint_route53_zone["ecs"].id
+    #glue_zone_id = aws_route53_zone.all_endpoint_route53_zone["glue"].id
+    #elasticbeanstalk_zone_id = aws_route53_zone.all_endpoint_route53_zone["elasticbeanstalk"].id
+    #email_smtp_zone_id = aws_route53_zone.all_endpoint_route53_zone["email-smtp"].id
 }
 
 #Export outputs of type list
