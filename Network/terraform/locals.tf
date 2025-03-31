@@ -32,21 +32,21 @@ locals {
 
 #Other Endpoint association
 
-names_of_asso_service = [
-  "sns_zone_id",
-  "sqs_zpne_id",
-  "rds_zone_id",
-  "elasticache_zone_id",
-  "backup_zone_id",
-  "ecr_dkr_zone_id",
-  "eks_zone_id",
-  "ecs_zone_id",
-  "glue_zone_id",
-  "elasticbeanstalk_zone_id",
-  "email_smtp_zone_id"
-]
+#names_of_asso_service = [
+#  "sns_zone_id",
+#  "sqs_zpne_id",
+#  "rds_zone_id",
+#  "elasticache_zone_id",
+#  "backup_zone_id",
+#  "ecr_dkr_zone_id",
+#  "eks_zone_id",
+#  "ecs_zone_id",
+#  "glue_zone_id",
+#  "elasticbeanstalk_zone_id",
+#  "email_smtp_zone_id"
+#]
 
-vpc_endpoint_ssm_parameter_path = "/nm/aft/account_customization/output/account-lz2-common/"
+#vpc_endpoint_ssm_parameter_path = "/nm/aft/account_customization/output/account-lz2-common/"
 
   
   private_subnet_list    = ["10.1.0.0/17", "10.1.128.0/17"]
