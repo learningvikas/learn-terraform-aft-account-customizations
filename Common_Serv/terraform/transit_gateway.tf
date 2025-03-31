@@ -12,7 +12,7 @@ data "aws_ec2_transit_gateway" "primary_network_tgw" {
 
 resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_network" {
     subnet_ids          = aws_subnet.private_tgw_subnet[*].id
-    transit_gateway_id  = data.aws_ec2_transit_gateway.primary_network_tgw.id
+    transit_gateway_id  = local.network_tgw
     vpc_id = aws_vpc.comsrv_vpc.id
     appliance_mode_support = local.appliance_mode_support
     transit_gateway_default_route_table_association = local.tgw_default_rt_association
