@@ -22,7 +22,7 @@ resource "aws_route53_zone" "shared_route53_zone" {
 #Authorize application vpcs to be associated with core private hosted zone
 resource "aws_route53_vpc_association_authorization" "private_shared_r53_zone" {
     count = length(local.account_list)
-    vpc_id = module.aft_accounts_info.param_name_values[${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
+    vpc_id = module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
     zone_id = aws_route53_zone.shared_route53_zone.id
 }
 
@@ -326,7 +326,7 @@ resource "aws_route53_zone" "ssm_endpoint_route53_zone" {
 #Authorize application vpcs to be associated with core private hosted zone
 resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ssm_endpoint" {
     count = length(local.account_list)
-    vpc_id = module.aft_accounts_info.param_name_values[${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
+    vpc_id = module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
     zone_id = aws_route53_zone.ssm_endpoint_route53_zone.id
 }
 
@@ -360,7 +360,7 @@ resource "aws_route53_zone" "ssmmessages_endpoint_route53_zone" {
 #Authorize application vpcs to be associated with core private hosted zone
 resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ssmmessages_endpoint" {
     count = length(local.account_list)
-    vpc_id = module.aft_accounts_info.param_name_values[${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
+    vpc_id = module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
     zone_id = aws_route53_zone.ssmmessages_endpoint_route53_zone.id
 }
 
@@ -388,7 +388,7 @@ resource "aws_route53_zone" "ec2messages_endpoint_route53_zone" {
 #Authorize application vpcs to be associated with core private hosted zone
 resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ec2messages_endpoint" {
     count = length(local.account_list)
-    vpc_id = module.aft_accounts_info.param_name_values[${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
+    vpc_id = module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
     zone_id = aws_route53_zone.ec2messages_endpoint_route53_zone.id
 }
 
@@ -564,7 +564,7 @@ resource "aws_route53_zone" "s3_endpoint_route53_zone" {
 #Authorize application vpcs to be associated with core private hosted zone
 resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_s3_endpoint" {
     count = length(local.account_list)
-    vpc_id = module.aft_accounts_info.param_name_values[${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
+    vpc_id = module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
     zone_id = aws_route53_zone.s3_endpoint_route53_zone.id
 }
 
@@ -635,7 +635,7 @@ resource "aws_route53_zone" "all_endpoint_route53_zone" {
 #Authorize application vpcs to be associated with core private hosted zone
 resource "aws_route53_vpc_association_authorization" "all_other_private_amazon_r53_zone_assoc" {
     count = length(local.account_list)
-    vpc_id = module.aft_accounts_info.param_name_values[${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
+    vpc_id = module.aft_accounts_info.param_name_values["${local.ssm_parameter_path}${local.account_list[count.index]}/vpc_id"]
     zone_id = local.vpc_endpoint_authorization_list[count.index].endpoint_hz_id
 }
 
