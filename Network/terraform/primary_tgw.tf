@@ -55,12 +55,12 @@ resource "aws_ec2_transit_gateway_route_table" "tgwrtb-nonprd-mum-01" {
 }
 
 #Shared Dev Route table association
-resource "aws_ec2_transit_gateway_route_table_association" "tgw_shared_dev_rtb" {
-  transit_gateway_attachment_id = "tgw-attach-0c9d48a4ba534262f"
-  transit_gateway_route_table_id = "tgw-rtb-069769447095cd2b3"
-  depends_on = [
-    module.transit_gateway
-  ]
-}
+#resource "aws_ec2_transit_gateway_route_table_association" "tgw_shared_rtb" {
+#  transit_gateway_attachment_id = ""
+#  transit_gateway_route_table_id = ""
+#  depends_on = [
+#    module.transit_gateway
+#  ]
+#}
 
 #Shared Dev Routes
