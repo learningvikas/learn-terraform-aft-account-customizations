@@ -69,8 +69,8 @@ resource "aws_subnet" "private_bastion_subnet" {
       tags = merge(
     {
       Name = try(
-        local.private_subnet_name[count.index],
-        format("${local.primary_vpc_name}-private-tgw-%s", element(local.availability_zones, count.index))
+        local.private_subnet_name_bastion[count.index],
+        format("${local.primary_vpc_name}-private-%s", element(local.availability_zones, count.index))
       )
     },
     local.common_tags
