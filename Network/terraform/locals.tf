@@ -35,4 +35,5 @@ locals {
     tgw_id            = module.transit_gateway.ec2_transit_gateway_id
     tgw_attachment_id = aws_ec2_transit_gateway_vpc_attachment.network_vpc.id
   }
+  export_list_output = {}
 }
