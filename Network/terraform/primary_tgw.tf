@@ -12,7 +12,7 @@ module "transit_gateway" {
    enable_auto_accept_shared_attachments   = true
    enable_vpn_ecmp_support                 = false
    ram_allow_external_principals           = true
-   ram_principals                          = ["486276252039", "610694133636"]
+   ram_principals                          = ["486276252039", "610694133636", "648770817914"]
    ram_name                                = "ram_network_tgw_mum_01"
    
    tags = merge(
@@ -55,12 +55,12 @@ resource "aws_ec2_transit_gateway_route_table" "tgwrtb-nonprd-mum-01" {
 }
 
 #Shared Dev Route table association
-#resource "aws_ec2_transit_gateway_route_table_association" "tgw_shared_dev_rtb" {
-#  transit_gateway_attachment_id = "tgw-attach-0a2073c886e390229"
-#  transit_gateway_route_table_id = "tgw-rtb-069769447095cd2b3"
-#  depends_on = [
-#    module.transit_gateway
-#  ]
-#}
+resource "aws_ec2_transit_gateway_route_table_association" "tgw_shared_dev_rtb" {
+  transit_gateway_attachment_id = "tgw-attach-0c9d48a4ba534262f"
+  transit_gateway_route_table_id = "tgw-rtb-069769447095cd2b3"
+  depends_on = [
+    module.transit_gateway
+  ]
+}
 
 #Shared Dev Routes
