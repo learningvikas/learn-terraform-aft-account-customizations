@@ -18,10 +18,9 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_network" {
     transit_gateway_default_route_table_association = local.tgw_default_rt_association
     transit_gateway_default_route_table_propagation = local.tgw_default_rt_propagation
     tags = merge(
-        {
-            "Name" : "${local.tgw_attachment_name}",
+        { "Name" : "${local.tgw_attachment_name}" },
             local.common_tags
-        }
+        
     )
 
     depends_on = [
