@@ -38,7 +38,7 @@ rules = [
 }
 
 #Primary Network Details
-primary_igw_name = "igw_commsrv_mum-01"
+primary_igw_name = "igw_comsrv_mum-01"
 public_nat_rt_name = "rtb-comsrv-publicnat-mum01"
 private_tgw_rt_name = "rtb-comsrv-privatetgw-mum01"
 private_fw_rt_name = "rtb-comsrc-privatefw-mum01"

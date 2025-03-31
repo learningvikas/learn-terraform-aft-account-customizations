@@ -330,11 +330,11 @@ resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ss
     zone_id = aws_route53_zone.ssm_endpoint_route53_zone.id
 }
 
-resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ssm_endpoint" {
-    count = length(local.account_list)
-    vpc_id = ""
-    zone_id = aws_route53_zone.ssm_endpoint_route53_zone.id
-}
+#resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ssm_endpoint" {
+#    count = length(local.account_list)
+#    vpc_id = ""
+#    zone_id = aws_route53_zone.ssm_endpoint_route53_zone.id
+#}
 
 # ssmmessages vpc endpoint route 53 settoing
 
