@@ -89,7 +89,7 @@ resource "aws_route_table_association" "private_bastion_rt_assoc" {
 
 resource "aws_route" "private_bastion_route" {
     count   = length(local.private_subnet_list_bastion)
-    route_table.id  = aws_route_table.private_bastion_rt.id
+    route_table.id = aws_route_table.private_bastion_rt.id
     destination_cidr_block = "0.0.0.0/0"
     transit_gateway_id = local.network_tgw.id
 
