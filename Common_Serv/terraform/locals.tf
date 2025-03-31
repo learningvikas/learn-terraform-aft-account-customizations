@@ -23,9 +23,11 @@ private_subnet_list_vpcendpoint    = ["10.166.0.128/26", "10.166.0.192/26"]
 private_subnet_name_vpcendpoint    = ["snt-comsrv-vpcendpoint-mum-a01", "snt-comsrv-vpcendpoint-mum-b01"]
 private_subnet_rtb_name_vpcendpoint = "rtb-comsrv-vpcendpoint-private-mum-01"
 
+
 #Shared IDs 
-network_account_id = module.aft_account_list.param_name_values["${local.ssm_parameter_path_account_list}account-lz2-network"]
+#network_account_id = module.aft_account_list.param_name_values["${local.ssm_parameter_path_account_list}account-lz2-network"]
 network_tgw_id = data.aws_ec2_transit_gateway.primary_network_tgw.id
+network_account_id  = ["155072754388"]
 
 #vpc cidr for sg_comsrv_endpoint, which want to use vpc endpoints for session manager
 #Security group settings

@@ -8,7 +8,7 @@ resource "aws_vpc" "comsrv_vpc" {
  
   tags = merge(
     { "Name"    = "${local.primary_vpc_name}",
-    },
+    }
     local.common_tags
   )
 }
@@ -125,7 +125,7 @@ resource "aws_subnet" "private_resolver_subnet" {
       tags = merge(
     {
       Name = try(
-        local.private_subnet_name-resolver[count.index],
+        local.private_subnet_name_resolver[count.index],
         format("${local.primary_vpc_name}-private-%s", element(local.availability_zones, count.index))
       )
     },
