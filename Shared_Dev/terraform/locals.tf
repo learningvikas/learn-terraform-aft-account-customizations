@@ -1,5 +1,5 @@
 locals {
-  account_name       = "account-lz2-shared-dev"
+  account_name       = "account-lz2-shared-dev-01"
   primary_vpc_name   = "vpc-shared-dev-mum-001"
   primary_region     = "ap-south-1"
   availability_zones = ["${local.primary_region}a", "${local.primary_region}b"]
@@ -56,9 +56,9 @@ locals {
     requester-name              = "vikas dubey"
   }
  
-  ssm_parameter_path              = "/vv/aft/account_customization/output/"
-  ssm_parameter_path_org_id       = "/vv/static/master/org-id"
-  ssm_parameter_path_account_list = "/vv/aft/account_id/"
+  ssm_parameter_path              = "/nm/aft/account_customization/output/"
+  ssm_parameter_path_org_id       = "/nm/static/master/org-id"
+  ssm_parameter_path_account_list = "/nm/aft/account_id/"
  
   # export outputs of type string
   export_output = {
