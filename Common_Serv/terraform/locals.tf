@@ -43,6 +43,8 @@ locals {
   onprem_private_network_range = ["10.164.0.0/16"]
   account_list = ["account-lz2-shared-dev-01"]
 
+  account_number_list = ["610694133636 "]
+
   # Dev Route 53 settings
   private_r53_zone_name_dev = "dev.aws.m-cloud.com"
   account_list_dev          = ["account-lz2-shared-dev-01"]
