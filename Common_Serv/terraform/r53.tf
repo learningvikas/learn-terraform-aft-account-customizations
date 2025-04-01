@@ -59,95 +59,7 @@ resource "aws_security_group" "sg_comsrv_resep_mum_01" {
     }
 }
 
-## Inbound endpoints
-resource "aws_route53_resolver_endpoint" "resolver_inbount_endpoint" {
-    name = "resep-comsrv-inbound-ept-mum-01"
-    direction = "INBOUND"
 
-    security_group_ids = [
-        aws_security_group.sg_comsrv_resep_mum_01.id
-    ]
-
-    ip_address {
-        subnet_id = "subnet-0e612ad1f9fcc51d8" #sns-comsrv-resolver-mum-a01 #data.aws_subnet.private_subnet_aza.id
-    }
-
-    ip_address {
-        subnet_id = "subnet-0a8a15bf513f4b078" #sns-comsrv-resolver-mum-a01 #data.aws_subnet.private_subnet_aza.id
-    }
-
-    tags = local.common_tags
-    
-    depends_on = [
-        aws_security_group.sg_comsrv_resep_mum_01
-    ]
-}
-
-resource "aws_route53_resolver_endpoint" "resolver_outbound_endpoint" {
-    name = "resep-comsrv-outbound-ept-mum-01"
-    direction = "OUTBOUND"
-
-    security_group_ids = [
-        aws_security_group.sg_comsrv_resep_mum_01.id
-    ]
-
-     ip_address {
-        subnet_id = "subnet-00d53e776165ce0c8" #sns-comsrv-resolver-mum-a01 #data.aws_subnet.private_subnet_aza.id
-    }
-
-    ip_address {
-        subnet_id = "subnet-04dc93d321d8bb94e" #sns-comsrv-resolver-mum-a01 #data.aws_subnet.private_subnet_aza.id
-    }
-
-    tags = local.common_tags
-    
-    depends_on = [
-        aws_security_group.sg_comsrv_resep_mum_01
-    ]
-}
-
-resource "aws_route53_resolver_rule" "aws_res_rule_01" {
-    domain_name = local.rslr_rule_name
-    name = "aws_res_rule_01"
-    rule_type = "FORWARD"
-    resolver_endpoint_id = aws_route53_resolver_endpoint.resolver_outbound_endpoint.id
-
-    target_ip {
-        ip = aws_route53_resolver_endpoint.resolver_inbound_endpoint.ip_address.*.ip[0]
-        port = 53
-    }
-
-    target_ip {
-        ip = aws_route53_resolver_endpoint.resolver_inbound_endpoint.ip_address.*.ip[1]
-        port = 53
-    }
-
-    tags = local.common_tags
-    
-    depends_on = [
-        aws_route53_resolver_endpoint.resolver_inbound_endpoint,
-        aws_route53_resolver_endpoint.resolver_outbound_endpoint,
-    ]
-}
-
-# aws res_rule_01 sharing with private shared hosted zone accounts
-resource "aws_ram_resource_share" "resolver-rule-shared-mum" {
-    name  = "resolver-rule-shared_mum"
-    allow_external_principals = false
-    tags = local.common_tags
-    depends_on = [aws_route53_resolver_rule.aws_res_rule_01]
-}
-
-resource "aws_ram_resource_association" "resolver-rule-shared_mum_assoc" {
-    resource_arn = aws_route53_resolver_rule.aws_res_rule_01.arn
-    resource_share_arn = aws_ram_resource_share.resolver-rule-shared_mum.arn
-}
-
-resource "aws_ram_principal_association" "resolver_rule_aws_nm_cloud_ou" {
-    count = length(local.account_number_list)
-    principal = local.account_number_list[count.index]
-    resource_share_arn = aws_ram_resource_share.resolver-rule-shared_mum.arn
-}
 
 #-------Onprem Route 53 settings-------
 resource "aws_security_group" "sg_onprem_comsrv_resep_mum_01" {
@@ -181,47 +93,6 @@ egress {
 }
 }
 
-resource "aws_route53_resolver_endpoint" "resolver_onprem_outbound_endpoint" {
-    name = "resep-comsrv-outbound-ept-mum-01"
-    direction = "OUTBOUND"
-
-    security_group_ids = [
-        aws_security_group.sg_onprem_comsrv_resep_mum_01.id
-    ]
-
-     ip_address {
-        subnet_id = "subnet-0a8a15bf513f4b078" #sns-comsrv-resolver-mum-a01 #data.aws_subnet.private_subnet_aza.id
-    }
-
-    ip_address {
-        subnet_id = "subnet-0e612ad1f9fcc51d8" #sns-comsrv-resolver-mum-a01 #data.aws_subnet.private_subnet_aza.id
-    }
-
-    tags = local.common_tags
-    
-    depends_on = [
-        aws_security_group.sg_onprem_comsrv_resep_mum_01
-    ]
-}
-
-# aws res_rule_01 sharing with private shared hosted zone accounts
-resource "aws_ram_resource_share" "resolver-rule-onprem-mum" {
-    name  = "resolver-rule-onprem_mum"
-    allow_external_principals = false
-    tags = local.common_tags
-    depends_on = [aws_route53_resolver_rule.onprem_res_rule_01]
-}
-
-resource "aws_ram_resource_association" "resolver-rule-onprem_mum_assoc" {
-    resource_arn = aws_route53_resolver_rule.onprem_res_rule_01.arn
-    resource_share_arn = aws_ram_resource_share.resolver-rule-onprem_mum.arn
-}
-
-resource "aws_ram_principal_association" "resolver_rule_aws_nm_cloud_onprem" {
-    count = length(local.account_number_list)
-    principal = local.account_number_list[count.index]
-    resource_share_arn = aws_ram_resource_share.resolver-rule-onprem_mum.arn
-}
 
 # Dev Route 53 settings
 resource "aws_route53_zone" "dev_route53_zone" {
