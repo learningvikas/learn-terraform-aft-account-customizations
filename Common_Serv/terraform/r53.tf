@@ -371,8 +371,9 @@ resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ec
 
 resource "aws_security_group" "allow_endpoints" {
     name = "sg_comsrv_endpoint"
-    description = <<EOT allow_for_ssm, ssmmessages and ec2messages vpc endpoint
-EOT
+    description = <<EOT 
+    allow_for_ssm, ssmmessages and ec2messages vpc endpoint
+    EOT
 
     vpc_id = aws_vpc.comsrv_vpc.id
 
@@ -388,7 +389,8 @@ EOT
     }
 
     ingress {
-        description = <<EOT allow forssm, ssmmessages and ec2messages vpc endpoint
+        description = <<EOT 
+        allow forssm, ssmmessages and ec2messages vpc endpoint
         EOT
         
         from_port = 443
@@ -407,7 +409,7 @@ EOT
 }
 
 #------------------------------------------------------------------------
-SSM Endppoint creation of ssm
+#SSM Endppoint creation of ssm
 
 resource "aws_vpc_endpoint" "ssm_endpoint_service" {
     vpc_id = aws_vpc.comsrv_vpc.id
@@ -648,7 +650,7 @@ resource "aws_vpc_endpoint" "all_other_endpoint_service" {
 resource "aws_route53_record" "all_other_private_r53_a_record" {
     for_each = toset(local.names_of_service)
     zone_id = aws_route53_zone.all_endpoint_route53_zone[each.key].id
-    name = ${each.key}.ap-south-1.amazonaws.com
+    name = "${each.key}.ap-south-1.amazonaws.com"
     type = "A"
 
     alias {
