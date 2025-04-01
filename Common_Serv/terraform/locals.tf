@@ -73,7 +73,7 @@ locals {
 
   private_amazon_r53_zone_ssmmessages_endpoint = "ssmmessages.ap-south-1.amazonaws.com"
 
-  private_r53_zone_s3_endpoint = "s3.ap-south-1.amazonaws.com
+  private_r53_zone_s3_endpoint = "s3.ap-south-1.amazonaws.com"
 
 
   # VPC endpoints
