@@ -28,6 +28,10 @@ locals {
   network_tgw = "tgw-030443beea8bb87fe"
 
   tgw_attachment_name        = "tgw-comsrv-tgwattach-mum-01"
+  rslr_rule_name = "aws.m-cloud.com"
+  rslr_onprem_rule_name = "corp.ma.com"
+
+
 
 
   # Security group settings
