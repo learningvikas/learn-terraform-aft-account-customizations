@@ -27,6 +27,8 @@ locals {
   network_account_id  = "155072754388"
   network_tgw = "tgw-030443beea8bb87fe"
 
+  tgw_attachment_name        = "tgw-comsrv-tgwattach-mum-01"
+
 
   # Security group settings
   inbound_ports = [443]
@@ -43,7 +45,7 @@ locals {
   onprem_private_network_range = ["10.164.0.0/16"]
   account_list = ["account-lz2-shared-dev-01"]
 
-  account_number_list = ["610694133636 "]
+  account_number_list = ["610694133636"]
 
   # Dev Route 53 settings
   private_r53_zone_name_dev = "dev.aws.m-cloud.com"
@@ -70,6 +72,11 @@ locals {
       ]
     ]
   )
+
+  appliance_mode_support     = "enable"
+  tgw_default_rt_association = false
+  tgw_default_rt_propagation = false
+
 
   instance_tenancy        = "default"
   enable_dns_support      = true
