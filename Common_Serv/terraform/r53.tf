@@ -53,7 +53,7 @@ ingress {
 egress {
     description = "DNS port"
     from_port   = 0
-    tp_port     = 0
+    to_port     = 0
     protocol    = "-1"
     cidr_blocks = "0.0.0.0/0"
     ipv6_cidr_blocks = ["::/0"]
@@ -92,11 +92,11 @@ resource "aws_route53_resolver_endpoint" "resolver_outbound_endpoint" {
     ]
 
      ip_address {
-        subnet_id = "" #sns-comsrv-resolver-mum-a01 #data.aws_subnet.private_subnet_aza.id
+        subnet_id = "subnet-00d53e776165ce0c8" #sns-comsrv-resolver-mum-a01 #data.aws_subnet.private_subnet_aza.id
     }
 
     ip_address {
-        subnet_id = "" #sns-comsrv-resolver-mum-a01 #data.aws_subnet.private_subnet_aza.id
+        subnet_id = "subnet-04dc93d321d8bb94e" #sns-comsrv-resolver-mum-a01 #data.aws_subnet.private_subnet_aza.id
     }
 
     tags = local.common_tags
@@ -330,11 +330,11 @@ resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ss
     zone_id = aws_route53_zone.ssm_endpoint_route53_zone.id
 }
 
-#resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ssm_endpoint" {
-#    count = length(local.account_list)
-#    vpc_id = ""
-#    zone_id = aws_route53_zone.ssm_endpoint_route53_zone.id
-#}
+resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ssm_endpoint" {
+    count = length(local.account_list)
+    vpc_id = "vpc-0a9234b586b951630"
+    zone_id = aws_route53_zone.ssm_endpoint_route53_zone.id
+}
 
 # ssmmessages vpc endpoint route 53 settoing
 
