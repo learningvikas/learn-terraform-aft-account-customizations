@@ -36,7 +36,7 @@ resource "aws_security_group" "sg_comsrv_resep_mum_01" {
     ingress {
     description = "DNS port"
     from_port   = 53
-    tp_port     = 53
+    to_port     = 53
     protocol    = "tcp"
     cidr_blocks = local.private_network_range
     }
@@ -44,7 +44,7 @@ resource "aws_security_group" "sg_comsrv_resep_mum_01" {
     ingress {
     description = "DNS port"
     from_port   = 53
-    tp_port     = 53
+    to_port     = 53
     protocol    = "udp"
     cidr_blocks = local.private_network_range
     }
@@ -158,7 +158,7 @@ resource "aws_security_group" "sg_onprem_comsrv_resep_mum_01" {
     ingress {
     description = "DNS port"
     from_port   = 53
-    tp_port     = 53
+    to_port     = 53
     protocol    = "tcp"
     cidr_blocks = local.private_network_range
 }
@@ -166,7 +166,7 @@ resource "aws_security_group" "sg_onprem_comsrv_resep_mum_01" {
 ingress {
     description = "DNS port"
     from_port   = 53
-    tp_port     = 53
+    to_port     = 53
     protocol    = "udp"
     cidr_blocks = local.private_network_range
 }
@@ -174,7 +174,7 @@ ingress {
 egress {
     description = "DNS port"
     from_port   = 0
-    tp_port     = 0
+    to_port     = 0
     protocol    = "-1"
     cidr_blocks = "0.0.0.0/0"
     ipv6_cidr_blocks = ["::/0"]

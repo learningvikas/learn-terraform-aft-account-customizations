@@ -25,6 +25,8 @@ locals {
   # Shared IDs 
   network_tgw_id = data.aws_ec2_transit_gateway.primary_network_tgw.id
   network_account_id  = "155072754388"
+  network_tgw = "tgw-030443beea8bb87fe"
+
 
   # Security group settings
   inbound_ports = [443]
