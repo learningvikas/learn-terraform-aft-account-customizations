@@ -371,9 +371,7 @@ resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ec
 
 resource "aws_security_group" "allow_endpoints" {
     name = "sg_comsrv_endpoint"
-    description = <<EOT 
-    allow_for_ssm, ssmmessages and ec2messages vpc endpoint
-    EOT
+    description = "allowforssm, ssmmessages and ec2messages vpc endpoint"
 
     vpc_id = aws_vpc.comsrv_vpc.id
 
@@ -389,9 +387,7 @@ resource "aws_security_group" "allow_endpoints" {
     }
 
     ingress {
-        description = <<EOT 
-        allow forssm, ssmmessages and ec2messages vpc endpoint
-        EOT
+        description = "allowforssm, ssmmessages and ec2messages vpc endpoint"
         
         from_port = 443
         to_port = 443
