@@ -489,7 +489,7 @@ resource "aws_route53_record" "private_r53_ssmmessages_a_record" {
 
     alias {
         name = aws_vpc_endpoint.ssmmessages_endpoint_service.dns_entry[0].dns_name 
-        zone_id = aws_vpc_endpoint.ssmmessages_endpoint_service.dns_entry[0].hosted_zone.id
+        zone_id = aws_vpc_endpoint.ssmmessages_endpoint_service.dns_entry[0].hosted_zone_id
         evaluate_target_health = true
     }
 
@@ -506,7 +506,7 @@ resource "aws_route53_record" "private_r53_ec2messages_a_record" {
 
     alias {
         name = aws_vpc_endpoint.ec2messages_endpoint_service.dns_entry[0].dns_name 
-        zone_id = aws_vpc_endpoint.ec2messages_endpoint_service.dns_entry[0].hosted_zone.id
+        zone_id = aws_vpc_endpoint.ec2messages_endpoint_service.dns_entry[0].hosted_zone_id
         evaluate_target_health = true
     }
 
@@ -577,7 +577,7 @@ resource "aws_route53_record" "private_r53_s3_a_record" {
 
     alias {
         name = aws_vpc_endpoint.s3_endpoint_service.dns_entry[0].dns_name 
-        zone_id = aws_vpc_endpoint.s3_endpoint_service.dns_entry[0].hosted_zone.id
+        zone_id = aws_vpc_endpoint.s3_endpoint_service.dns_entry[0].hosted_zone_id
         evaluate_target_health = true
     }
 
@@ -651,7 +651,7 @@ resource "aws_route53_record" "all_other_private_r53_a_record" {
 
     alias {
         name = aws_vpc_endpoint.all_other_endpoint_service[each.key].dns_entry[0].dns_name 
-        zone_id = aws_vpc_endpoint.all_other_endpoint_service[each.key].dns_entry[0].hosted_zone.id
+        zone_id = aws_vpc_endpoint.all_other_endpoint_service[each.key].dns_entry[0].hosted_zone_id
         evaluate_target_health = true
     }
 
