@@ -58,6 +58,9 @@ locals {
   # ec2messages.ap-south-1.amazonaws.com Endpoint route r53 setting
   private_r53_zone_ec2messages_endpoint = "ec2messages.ap-south-1.amazonaws.com"
 
+  private_amazon_r53_zone_ssmmessages_endpoint = "ssmmessages.ap-south-1.amazonaws.com"
+
+
   # VPC endpoints
   names_of_service = ["sns", "sqs", "rds", "elasticache", "backup", "ecr.dkr", "eks", "ecs", "glue", "elasticbeanstalk", "email-smtp"]
   all_account_list_vpc = ["account-lz2.0-shared-dev-01"]
