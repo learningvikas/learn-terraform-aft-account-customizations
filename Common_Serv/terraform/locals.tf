@@ -45,6 +45,15 @@ locals {
 
   # Shared-Route 53 settings
   private_r53_zone_name = "shared.aws.m-cloud.com"
+
+  # Dev Route 53 settings
+  private_r53_zone_name_dev = "dev.aws.m-cloud.com"
+
+  # UAT Route 53 settings
+  private_r53_zone_name_uat = "uat.aws.m-cloud.com"
+
+  private_r53_zone_name_prd = "prd.aws.m-cloud.com"
+  
   private_network_range = ["10.3.0.0/16"]
   onprem_private_network_range = ["10.164.0.0/16"]
   account_list = ["account-lz2-shared-dev-01"]
@@ -63,6 +72,8 @@ locals {
   private_r53_zone_ec2messages_endpoint = "ec2messages.ap-south-1.amazonaws.com"
 
   private_amazon_r53_zone_ssmmessages_endpoint = "ssmmessages.ap-south-1.amazonaws.com"
+
+  private_r53_zone_s3_endpoint = "s3.ap-south-1.amazonaws.com
 
 
   # VPC endpoints
