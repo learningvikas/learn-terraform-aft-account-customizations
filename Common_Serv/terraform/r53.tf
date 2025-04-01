@@ -106,7 +106,7 @@ resource "aws_route53_resolver_endpoint" "resolver_outbound_endpoint" {
     ]
 }
 
-esource "aws_route53_resolver_rule" "aws_res_rule_01" {
+resource "aws_route53_resolver_rule" "aws_res_rule_01" {
     domain_name = local.rslr_rule_name
     name = "aws_res_rule_01"
     rule_type = "FORWARD"
