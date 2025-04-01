@@ -32,31 +32,31 @@ resource "aws_security_group" "sg_comsrv_resep_mum_01" {
     name = "sg_comsrv_resep_mum_01"
     description = "Security Group To Be assocaited with r53 resolver"
     vpc_id = aws_vpc.comsrv_vpc.id
-}
 
-ingress {
+    ingress {
     description = "DNS port"
     from_port   = 53
     tp_port     = 53
     protocol    = "tcp"
     cidr_blocks = local.private_network_range
-}
+    }
 
-ingress {
+    ingress {
     description = "DNS port"
     from_port   = 53
     tp_port     = 53
     protocol    = "udp"
     cidr_blocks = local.private_network_range
-}
+    }
 
-egress {
+    egress {
     description = "DNS port"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = "0.0.0.0/0"
     ipv6_cidr_blocks = ["::/0"]
+    }
 }
 
 ## Inbound endpoints
@@ -371,7 +371,9 @@ resource "aws_route53_vpc_association_authorization" "private_amazon_r53_zone_ec
 
 resource "aws_security_group" "allow_endpoints" {
     name = "sg_comsrv_endpoint"
-    description = "allow_for_ssm, ssmmessages and ec2messages vpc endpoint"
+    description = <<EOT allow_for_ssm, ssmmessages and ec2messages vpc endpoint
+EOT
+
     vpc_id = aws_vpc.comsrv_vpc.id
 
     dynamic "ingress" {
@@ -386,7 +388,9 @@ resource "aws_security_group" "allow_endpoints" {
     }
 
     ingress {
-        description = ""allow_for_ssm, ssmmessages and ec2messages vpc endpoint"
+        description = <<EOT allow forssm, ssmmessages and ec2messages vpc endpoint
+        EOT
+        
         from_port = 443
         to_port = 443
         protocol = "tcp"
